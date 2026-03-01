@@ -14,16 +14,16 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--zebex-dark);
-  color: var(--zebex-text);
+  background: #fff;
+  color: #1D1D1F;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0A0A0A; }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #f5f5f7; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(40px); }
@@ -33,31 +33,28 @@ body {
   from { opacity: 0; transform: scale(0.94); }
   to { opacity: 1; transform: scale(1); }
 }
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
 
+/* Dark glass — used in hero, why-laser, contact */
 .glass {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.05);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 .glass-dark {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.65);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255,255,255,0.06);
 }
+
+/* White/light nav */
+.nav-white {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
 .red-gradient {
   background: linear-gradient(135deg, #D4192C 0%, #FF3B4E 100%);
 }
@@ -67,26 +64,38 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Battle cards (inside dark Why Laser section) */
 .battle-card-laser {
-  background: linear-gradient(135deg, rgba(212,25,44,0.12) 0%, rgba(212,25,44,0.04) 100%);
-  border: 1px solid rgba(212,25,44,0.25);
+  background: linear-gradient(135deg, rgba(212,25,44,0.15) 0%, rgba(212,25,44,0.05) 100%);
+  border: 1px solid rgba(212,25,44,0.3);
 }
 .battle-card-led {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
 }
+
+/* Product cards — white bg on white section */
 .product-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
   transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.35s ease;
 }
 .product-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
 }
+
+/* Application cards — on light gray section */
 .app-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
 }
 .app-card:hover {
-  background: rgba(212,25,44,0.07);
-  border-color: rgba(212,25,44,0.28);
+  border-color: rgba(212,25,44,0.25);
+  box-shadow: 0 8px 24px rgba(212,25,44,0.08);
   transform: translateY(-3px);
 }

@@ -31,8 +31,8 @@ const MailIcon = () => (
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
   </svg>
 );
-const GlobeIcon = () => (
-  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+const GlobeIcon = ({ dark }: { dark?: boolean }) => (
+  <svg className={`w-4 h-4 ${dark ? 'text-[#444]' : 'text-[#86868B]'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
   </svg>
 );
@@ -48,18 +48,22 @@ function FadeSection({ children, className = '', delay = 0 }: { children: React.
   );
 }
 
-function LanguageSwitcher({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
+function LanguageSwitcher({ lang, setLang, dark }: { lang: Lang; setLang: (l: Lang) => void; dark?: boolean }) {
   const langs: { code: Lang; label: string }[] = [
     { code: 'en', label: 'EN' },
     { code: 'ko', label: '한국어' },
     { code: 'zh-TW', label: '繁中' },
   ];
   return (
-    <div className="flex items-center gap-1 glass rounded-full px-2 py-1">
-      <GlobeIcon />
+    <div className={`flex items-center gap-1 rounded-full px-2 py-1 ${dark ? 'bg-black/5 border border-black/8' : 'glass'}`}>
+      <GlobeIcon dark={dark} />
       {langs.map((l) => (
         <button key={l.code} onClick={() => setLang(l.code)}
-          className={`px-2 py-0.5 rounded-full text-xs font-medium transition-all duration-200 ${lang === l.code ? 'bg-[#D4192C] text-white' : 'text-[#86868B] hover:text-white'}`}>
+          className={`px-2 py-0.5 rounded-full text-xs font-medium transition-all duration-200 ${
+            lang === l.code
+              ? 'bg-[#D4192C] text-white'
+              : dark ? 'text-[#555] hover:text-[#111]' : 'text-[#86868B] hover:text-white'
+          }`}>
           {l.label}
         </button>
       ))}
@@ -72,9 +76,16 @@ function Navbar({ activeTab, setActiveTab, lang, setLang, t }: {
   lang: Lang; setLang: (l: Lang) => void; t: typeof translations['en'];
 }) {
   const [scrolled, setScrolled] = useState(false);
+  const [isLightSection, setIsLightSection] = useState(false);
+
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handler);
+    const handler = () => {
+      const heroEl = document.getElementById('hero');
+      const heroH = heroEl ? heroEl.clientHeight : window.innerHeight;
+      setScrolled(window.scrollY > 10);
+      setIsLightSection(window.scrollY > heroH - 80);
+    };
+    window.addEventListener('scroll', handler, { passive: true });
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
@@ -85,18 +96,25 @@ function Navbar({ activeTab, setActiveTab, lang, setLang, t }: {
     { id: 'handheld-scanners', label: t.nav.handheldScanners },
   ];
 
+  const navClass = isLightSection
+    ? 'nav-white'
+    : scrolled ? 'glass-dark border-b border-white/5' : 'bg-transparent';
+
+  const textActive = isLightSection ? 'text-[#1D1D1F]' : 'text-white';
+  const textInactive = isLightSection ? 'text-[#888] hover:text-[#1D1D1F]' : 'text-[#86868B] hover:text-[#CCC]';
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass-dark border-b border-white/5' : 'bg-transparent'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
           <div className="flex items-center gap-2 flex-shrink-0">
             <div className="w-5 h-0.5 bg-[#D4192C]" />
-            <span className="text-white font-bold text-lg tracking-wider">ZEBEX</span>
+            <span className={`font-bold text-lg tracking-wider transition-colors ${isLightSection ? 'text-[#1D1D1F]' : 'text-white'}`}>ZEBEX</span>
           </div>
           <div className="hidden md:flex items-center">
             {tabs.map((tab) => (
               <button key={tab.id} onClick={() => { setActiveTab(tab.id); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); }}
-                className={`relative px-4 py-4 text-sm font-medium transition-colors ${activeTab === tab.id ? 'text-white' : 'text-[#86868B] hover:text-[#CCC]'}`}>
+                className={`relative px-4 py-4 text-sm font-medium transition-colors ${activeTab === tab.id ? textActive : textInactive}`}>
                 {tab.label}
                 {activeTab === tab.id && (
                   <motion.div layoutId="nav-underline" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#D4192C] rounded-t-full"
@@ -106,16 +124,17 @@ function Navbar({ activeTab, setActiveTab, lang, setLang, t }: {
             ))}
           </div>
           <div className="flex items-center gap-3">
-            <LanguageSwitcher lang={lang} setLang={setLang} />
+            <LanguageSwitcher lang={lang} setLang={setLang} dark={isLightSection} />
             <a href="#contact" className="hidden sm:inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold text-white red-gradient hover:opacity-90 transition-opacity">
               Contact Sales
             </a>
           </div>
         </div>
+        {/* Mobile tabs */}
         <div className="md:hidden flex overflow-x-auto gap-0 pb-1">
           {tabs.map((tab) => (
             <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-              className={`relative flex-shrink-0 px-3 py-2 text-xs font-medium transition-colors ${activeTab === tab.id ? 'text-white' : 'text-[#86868B]'}`}>
+              className={`relative flex-shrink-0 px-3 py-2 text-xs font-medium transition-colors ${activeTab === tab.id ? textActive : textInactive}`}>
               {tab.label}
               {activeTab === tab.id && (
                 <motion.div layoutId="mob-underline" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#D4192C] rounded-t-full"
@@ -131,7 +150,7 @@ function Navbar({ activeTab, setActiveTab, lang, setLang, t }: {
 
 function HeroSection({ t }: { t: typeof translations['en'] }) {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0A0A0A]">
       <div className="absolute inset-0">
         <Image src="/images/products/hero-warehouse.png" alt="ZEBEX warehouse" fill className="object-cover opacity-25" priority />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/70 via-[#0A0A0A]/40 to-[#0A0A0A]" />
@@ -189,28 +208,31 @@ function ProductCard({ product, lang, t, index }: {
   return (
     <motion.div ref={ref} initial={{ opacity: 0, y: 50 }} animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.75, delay: index * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="product-card glass rounded-3xl overflow-hidden border border-white/6">
-      <div className="relative bg-gradient-to-b from-[#111] to-[#0A0A0A] p-6 flex items-center justify-center min-h-[260px]">
+      className="product-card rounded-3xl overflow-hidden">
+      {/* Product image area — light gray bg */}
+      <div className="relative bg-[#F5F5F7] flex items-center justify-center min-h-[280px] p-6">
         <div className="absolute top-4 left-4">
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-bold text-[#D4192C] border border-[#D4192C]/30 bg-[#D4192C]/10">
+          <span className="inline-block px-3 py-1 rounded-full text-xs font-bold text-[#D4192C] border border-[#D4192C]/25 bg-white">
             {product.model}
           </span>
         </div>
-        <Image src={product.image} alt={product.model} width={300} height={200} className="object-contain max-h-48 w-auto drop-shadow-2xl" />
+        <Image src={product.image} alt={product.model} width={340} height={240}
+          className="object-contain max-h-56 w-auto" />
       </div>
+      {/* Content */}
       <div className="p-6">
-        <h3 className="text-2xl font-bold text-white mb-1">{product.name[lang]}</h3>
+        <h3 className="text-2xl font-bold text-[#1D1D1F] mb-1">{product.name[lang]}</h3>
         <p className="text-[#D4192C] text-sm font-medium mb-3">{product.tagline[lang]}</p>
-        <p className="text-[#86868B] text-sm leading-relaxed mb-5">{product.description[lang]}</p>
+        <p className="text-[#555] text-sm leading-relaxed mb-5">{product.description[lang]}</p>
         <ul className="space-y-2.5 mb-5">
           {product.features[lang].map((f, i) => (
-            <li key={i} className="flex items-start gap-2.5 text-sm text-[#D4D4D6]">
+            <li key={i} className="flex items-start gap-2.5 text-sm text-[#1D1D1F]">
               <CheckIcon /><span>{f}</span>
             </li>
           ))}
         </ul>
         <button onClick={() => setShowSpecs(!showSpecs)}
-          className="w-full flex items-center justify-between px-4 py-3 rounded-xl glass border border-white/8 text-sm font-medium text-[#86868B] hover:text-white hover:border-white/15 transition-all">
+          className="w-full flex items-center justify-between px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium text-[#555] hover:text-[#1D1D1F] hover:border-gray-300 bg-[#F5F5F7] transition-all">
           <span>{t.specs}</span>
           <motion.span animate={{ rotate: showSpecs ? 180 : 0 }} transition={{ duration: 0.3 }}>▾</motion.span>
         </button>
@@ -218,11 +240,11 @@ function ProductCard({ product, lang, t, index }: {
           {showSpecs && (
             <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden mt-3">
-              <div className="rounded-xl overflow-hidden border border-white/6">
+              <div className="rounded-xl overflow-hidden border border-gray-100">
                 {product.specs.map((spec, i) => (
-                  <div key={i} className={`flex justify-between px-4 py-2.5 text-xs ${i % 2 === 0 ? 'bg-white/2' : ''}`}>
-                    <span className="text-[#86868B]">{spec.label}</span>
-                    <span className="text-white font-medium text-right max-w-[55%]">{spec.value}</span>
+                  <div key={i} className={`flex justify-between px-4 py-2.5 text-xs ${i % 2 === 0 ? 'bg-[#F5F5F7]' : 'bg-white'}`}>
+                    <span className="text-[#888]">{spec.label}</span>
+                    <span className="text-[#1D1D1F] font-medium text-right max-w-[55%]">{spec.value}</span>
                   </div>
                 ))}
               </div>
@@ -278,8 +300,8 @@ function WhyLaserSection({ t }: { t: typeof translations['en'] }) {
           <p className="text-[#86868B] text-sm leading-relaxed">{wl.ledDesc}</p>
         </FadeSection>
       </div>
-      <FadeSection delay={0.15} className="glass rounded-3xl overflow-hidden border border-white/6 mb-12">
-        <div className="grid grid-cols-3 text-xs font-semibold uppercase tracking-wider text-[#86868B] px-6 py-4 border-b border-white/5 bg-white/2">
+      <FadeSection delay={0.15} className="rounded-3xl overflow-hidden border border-white/8 mb-12">
+        <div className="grid grid-cols-3 text-xs font-semibold uppercase tracking-wider text-[#86868B] px-6 py-4 border-b border-white/6 bg-white/3">
           <span>Category</span>
           <span className="text-[#D4192C]">Laser BGS ✓</span>
           <span>LED Red Light</span>
@@ -287,7 +309,7 @@ function WhyLaserSection({ t }: { t: typeof translations['en'] }) {
         {wl.comparison.map((row, i) => (
           <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.1 }} viewport={{ once: true }}
-            className={`grid grid-cols-3 gap-4 px-6 py-4 border-b border-white/4 last:border-0 ${i % 2 === 0 ? 'bg-white/1' : ''}`}>
+            className={`grid grid-cols-3 gap-4 px-6 py-4 border-b border-white/4 last:border-0 ${i % 2 === 0 ? 'bg-white/2' : ''}`}>
             <div className="text-sm font-medium text-white">{row.category}</div>
             <div className="flex items-start gap-1.5 text-xs text-[#D4D4D6]">
               <span className="text-[#D4192C] font-bold mt-0.5 flex-shrink-0">✓</span><span>{row.laserVal}</span>
@@ -320,17 +342,17 @@ function ApplicationsSection({ applications, t, lang }: {
   return (
     <FadeSection className="py-16 px-6 max-w-6xl mx-auto">
       <div className="text-center mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">{t.applications.title}</h2>
-        <p className="text-[#86868B] max-w-xl mx-auto">{t.applications.subtitle}</p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#1D1D1F] mb-3">{t.applications.title}</h2>
+        <p className="text-[#666] max-w-xl mx-auto">{t.applications.subtitle}</p>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {items.map((app, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }} transition={{ delay: i * 0.1, duration: 0.6 }}
-            className="app-card glass rounded-2xl p-5 border border-white/6">
+            className="app-card rounded-2xl p-5">
             <div className="text-3xl mb-3">{app.icon}</div>
-            <h4 className="text-white font-semibold mb-2 text-sm">{app.title}</h4>
-            <p className="text-[#86868B] text-xs leading-relaxed">{app.description}</p>
+            <h4 className="text-[#1D1D1F] font-semibold mb-2 text-sm">{app.title}</h4>
+            <p className="text-[#666] text-xs leading-relaxed">{app.description}</p>
           </motion.div>
         ))}
       </div>
@@ -340,7 +362,7 @@ function ApplicationsSection({ applications, t, lang }: {
 
 function ContactSection({ t }: { t: typeof translations['en'] }) {
   return (
-    <section id="contact" className="py-24 px-6 relative overflow-hidden">
+    <section id="contact" className="py-24 px-6 relative overflow-hidden bg-[#0A0A0A]">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-96 h-96 rounded-full bg-[#D4192C]/8 blur-3xl" />
       </div>
@@ -383,54 +405,57 @@ function ContactSection({ t }: { t: typeof translations['en'] }) {
   );
 }
 
-function ProductsSection({ activeTab, lang, t }: { activeTab: ProductLine; lang: Lang; t: typeof translations['en'] }) {
-  const line = productLines.find((p) => p.id === activeTab)!;
-  const dividerStyle = { height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)', maxWidth: '800px', margin: '0 auto' };
-  return (
-    <section id="products" className="pt-8 pb-0">
-      <AnimatePresence mode="wait">
-        <motion.div key={activeTab} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.45 }}
-          className="text-center py-16 px-6 max-w-4xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">{line.name[lang]}</h2>
-          <p className="text-lg text-[#86868B]">{line.tagline[lang]}</p>
-        </motion.div>
-      </AnimatePresence>
-      <div className="px-6 max-w-7xl mx-auto">
-        <div className={`grid gap-8 ${
-          line.products.length === 1 ? 'md:grid-cols-1 max-w-2xl mx-auto' :
-          line.products.length === 2 ? 'md:grid-cols-2' :
-          'md:grid-cols-2 lg:grid-cols-3'
-        }`}>
-          <AnimatePresence mode="wait">
-            {line.products.map((product, i) => (
-              <ProductCard key={`${activeTab}-${product.id}`} product={product} lang={lang} t={t} index={i} />
-            ))}
-          </AnimatePresence>
-        </div>
-      </div>
-      {line.showWhyLaser && (
-        <>
-          <div style={dividerStyle} className="my-16" />
-          <WhyLaserSection t={t} />
-        </>
-      )}
-      <div style={dividerStyle} className="my-16" />
-      <ApplicationsSection applications={line.applications} t={t} lang={lang} />
-    </section>
-  );
-}
-
 export default function Home() {
   const [activeTab, setActiveTab] = useState<ProductLine>('laser-sensors');
   const [lang, setLang] = useState<Lang>('en');
   const t = translations[lang];
+  const line = productLines.find((p) => p.id === activeTab)!;
+
   return (
-    <main className="min-h-screen bg-[#0A0A0A]">
+    <main className="min-h-screen">
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} lang={lang} setLang={setLang} t={t} />
+
+      {/* 1. Hero — DARK */}
       <HeroSection t={t} />
-      <ProductsSection activeTab={activeTab} lang={lang} t={t} />
-      <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)', maxWidth: '800px', margin: '0 auto' }} className="my-8" />
+
+      {/* 2. Products — WHITE */}
+      <section id="products" className="bg-white">
+        <AnimatePresence mode="wait">
+          <motion.div key={activeTab} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.45 }}
+            className="text-center pt-16 pb-10 px-6 max-w-4xl mx-auto">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1D1D1F] mb-4 leading-tight">{line.name[lang]}</h2>
+            <p className="text-lg text-[#666]">{line.tagline[lang]}</p>
+          </motion.div>
+        </AnimatePresence>
+        <div className="px-6 pb-20 max-w-7xl mx-auto">
+          <div className={`grid gap-8 ${
+            line.products.length === 1 ? 'md:grid-cols-1 max-w-2xl mx-auto' :
+            line.products.length === 2 ? 'md:grid-cols-2' :
+            'md:grid-cols-2 lg:grid-cols-3'
+          }`}>
+            <AnimatePresence mode="wait">
+              {line.products.map((product, i) => (
+                <ProductCard key={`${activeTab}-${product.id}`} product={product} lang={lang} t={t} index={i} />
+              ))}
+            </AnimatePresence>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Why Laser — DARK (laser-sensors tab only) */}
+      {line.showWhyLaser && (
+        <section className="bg-[#0A0A0A]">
+          <WhyLaserSection t={t} />
+        </section>
+      )}
+
+      {/* 4. Applications — LIGHT GRAY */}
+      <section className="bg-[#F5F5F7]">
+        <ApplicationsSection applications={line.applications} t={t} lang={lang} />
+      </section>
+
+      {/* 5. Contact — DARK */}
       <ContactSection t={t} />
     </main>
   );
