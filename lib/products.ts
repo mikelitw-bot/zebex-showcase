@@ -668,7 +668,7 @@ export const productLines: ProductLineData[] = [
         features: {
           en: [
             'Dual-CMOS lens: close-range + long-range in one device',
-            'Full reading range: 14cm to 3,000cm (Code 128)',
+            'Full reading range: 14cm to 300cm (Code 128)',
             'Extended DOF for versatile workspaces',
             'IP54 — dust & splash resistant',
             'Rugged housing for peak performance anywhere',
@@ -676,7 +676,7 @@ export const productLines: ProductLineData[] = [
           ],
           ko: [
             '듀얼 CMOS 렌즈: 하나의 장치에 근거리 + 장거리',
-            '전체 읽기 범위: 14cm ~ 3,000cm (Code 128)',
+            '전체 읽기 범위: 14cm ~ 300cm (Code 128)',
             '다재다능한 작업 공간을 위한 확장된 DOF',
             'IP54 — 방진 및 방수 스플래시',
             '어디서나 최고의 성능을 위한 견고한 하우징',
@@ -684,7 +684,7 @@ export const productLines: ProductLineData[] = [
           ],
           'zh-TW': [
             '雙 CMOS 鏡頭：一台設備兼顧近距離 + 遠距離',
-            '全讀取範圍：14cm 至 3,000cm（Code 128）',
+            '全讀取範圍：14cm 至 300cm（Code 128）',
             '延伸 DOF，適用於多種工作場所',
             'IP54 — 防塵且防濺水',
             '堅固外殼，隨處表現卓越',
