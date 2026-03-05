@@ -8,10 +8,10 @@ export interface ProductSpec {
 export interface Product {
   id: string;
   model: string;
-  name: { en: string; ko: string; 'zh-TW': string; de: string };
-  tagline: { en: string; ko: string; 'zh-TW': string; de: string };
-  description: { en: string; ko: string; 'zh-TW': string; de: string };
-  features: { en: string[]; ko: string[]; 'zh-TW': string[]; de: string[] };
+  name: { en: string; ko: string; 'zh-TW': string; de: string; fr: string; it: string };
+  tagline: { en: string; ko: string; 'zh-TW': string; de: string; fr: string; it: string };
+  description: { en: string; ko: string; 'zh-TW': string; de: string; fr: string; it: string };
+  features: { en: string[]; ko: string[]; 'zh-TW': string[]; de: string[]; fr: string[]; it: string[] };
   specs: ProductSpec[];
   image: string;
   accentColor: string;
@@ -19,11 +19,11 @@ export interface Product {
 
 export interface ProductLineData {
   id: ProductLine;
-  name: { en: string; ko: string; 'zh-TW': string; de: string };
-  tagline: { en: string; ko: string; 'zh-TW': string; de: string };
+  name: { en: string; ko: string; 'zh-TW': string; de: string; fr: string; it: string };
+  tagline: { en: string; ko: string; 'zh-TW': string; de: string; fr: string; it: string };
   heroImage: string;
   products: Product[];
-  applications: { en: ApplicationItem[]; ko: ApplicationItem[]; 'zh-TW': ApplicationItem[]; de: ApplicationItem[] };
+  applications: { en: ApplicationItem[]; ko: ApplicationItem[]; 'zh-TW': ApplicationItem[]; de: ApplicationItem[]; fr: ApplicationItem[]; it: ApplicationItem[] };
   showWhyLaser?: boolean;
 }
 
@@ -42,12 +42,16 @@ export const productLines: ProductLineData[] = [
       ko: '레이저 센서',
       'zh-TW': '雷射感測器',
       de: 'Lasersensoren',
+      fr: 'Capteurs Laser',
+      it: 'Sensori Laser',
     },
     tagline: {
       en: 'Precision sensing beyond limits.',
       ko: '한계를 초월한 정밀 감지.',
       'zh-TW': '突破極限的精密感測。',
       de: 'Präzisionssensorik ohne Grenzen.',
+      fr: 'Détection de précision sans limites.',
+      it: 'Rilevamento di precisione senza limiti.',
     },
     heroImage: '/images/products/zx-td0200n-sheet.png',
     products: [
@@ -59,18 +63,24 @@ export const productLines: ProductLineData[] = [
           ko: '레이저 센서',
           'zh-TW': '雷射感測器',
           de: 'Lasersensor',
+          fr: 'Capteur Laser',
+          it: 'Sensore Laser',
         },
         tagline: {
           en: 'Ultra-precise point detection at 40mm.',
           ko: '40mm에서의 초정밀 포인트 감지.',
           'zh-TW': '40mm 超精密點感測。',
           de: 'Ultrapräzise Punkterkennung bei 40mm.',
+          fr: 'Détection de point ultra-précise à 40mm.',
+          it: 'Rilevamento puntuale ultra-preciso a 40mm.',
         },
         description: {
           en: 'The ZX-PE0040N photoelectric sensor delivers pinpoint 0.1mm spot accuracy at its rated 40mm detection range. Built for high-density component detection on PCB lines and precision assembly systems.',
           ko: 'ZX-PE0040N 광전 센서는 40mm 정격 감지 거리에서 0.1mm 스팟 정밀도를 제공합니다. PCB 라인과 정밀 조립 시스템에서의 고밀도 부품 감지를 위해 설계되었습니다.',
           'zh-TW': 'ZX-PE0040N 光電感測器在 40mm 額定偵測距離下提供精準的 0.1mm 光點精度。專為 PCB 生產線和精密組裝系統上的高密度元件偵測所設計。',
           de: 'Der ZX-PE0040N Photoelektriksensor liefert punktgenaue 0,1mm Spotpräzision bei 40mm Erfassungsreichweite. Entwickelt für hochdichte Bauteilerkennung auf PCB-Linien und präzisen Montagesystemen.',
+          fr: 'Le capteur photoélectrique ZX-PE0040N offre une précision de spot de 0,1mm à sa portée de détection nominale de 40mm. Conçu pour la détection de composants haute densité sur les lignes PCB et les systèmes d\'assemblage de précision.',
+          it: 'Il sensore fotoelettrico ZX-PE0040N offre una precisione del punto di 0,1mm alla sua portata di rilevamento nominale di 40mm. Progettato per il rilevamento di componenti ad alta densità su linee PCB e sistemi di assemblaggio di precisione.',
         },
         features: {
           en: [
@@ -105,6 +115,22 @@ export const productLines: ProductLineData[] = [
             'IP66-Schutz — staubdicht & wasserstrahlbeständig',
             'Betriebstemperatur: −10°C bis 55°C',
           ],
+          fr: [
+            'Détection photoélectrique standard IEC',
+            'Spot ultra-fin de 0,1mm à 40mm de distance',
+            'Laser Rouge 650nm, Classe 2 — sûr & précis',
+            '< 1ms de temps de réponse pour les lignes à grande vitesse',
+            'Protection IP66 — étanche à la poussière & résistant aux jets d\'eau',
+            'Plage de fonctionnement : −10°C à 55°C',
+          ],
+          it: [
+            'Rilevamento fotoelettrico standard IEC',
+            'Punto ultra-fine da 0,1mm a 40mm di distanza',
+            'Laser Rosso 650nm, Classe 2 — sicuro & preciso',
+            '< 1ms di tempo di risposta per linee ad alta velocità',
+            'Protezione IP66 — a tenuta di polvere & resistente ai getti d\'acqua',
+            'Intervallo operativo: −10°C a 55°C',
+          ],
         },
         specs: [
           { label: 'Working Principle', value: 'Photoelectric Sensor' },
@@ -127,18 +153,24 @@ export const productLines: ProductLineData[] = [
           ko: 'TOF 레이저 센서',
           'zh-TW': 'TOF 雷射感測器',
           de: 'TOF-Lasersensor',
+          fr: 'Capteur Laser TOF',
+          it: 'Sensore Laser TOF',
         },
         tagline: {
           en: 'Time-of-Flight precision up to 2000mm.',
           ko: '2000mm까지의 비행 시간 정밀도.',
           'zh-TW': '飛行時間精度達 2000mm。',
           de: 'Time-of-Flight-Präzision bis 2000mm.',
+          fr: 'Précision Time-of-Flight jusqu\'à 2000mm.',
+          it: 'Precisione Time-of-Flight fino a 2000mm.',
         },
         description: {
           en: 'The ZX-TD0200N uses Time-of-Flight (TOF) technology to deliver reliable detection across multi-material, multi-color targets up to 2 meters away — where LED sensors fail. Perfect for conveyor height checks, pallet sensing, and AGV applications.',
           ko: 'ZX-TD0200N은 비행 시간(TOF) 기술을 사용하여 최대 2미터 떨어진 다중 재질, 다중 색상 목표에 걸쳐 신뢰할 수 있는 감지를 제공합니다. 컨베이어 높이 확인, 팔레트 감지, AGV 응용 프로그램에 적합합니다.',
           'zh-TW': 'ZX-TD0200N 採用飛行時間（TOF）技術，在最遠 2 公尺距離的多材質、多顏色目標上提供可靠偵測——這是 LED 感測器無法做到的。完美適用於輸送帶高度檢查、棧板感測和 AGV 應用。',
           de: 'Der ZX-TD0200N nutzt Time-of-Flight (TOF)-Technologie für zuverlässige Erkennung an multi-material, mehrfarbigen Zielen bis zu 2 Meter Entfernung — wo LED-Sensoren versagen. Ideal für Förderbandhöhenprüfung, Palettenerfassung und AGV-Anwendungen.',
+          fr: 'Le ZX-TD0200N utilise la technologie Time-of-Flight (TOF) pour offrir une détection fiable sur des cibles multi-matériaux et multicolores jusqu\'à 2 mètres — là où les capteurs LED échouent. Idéal pour le contrôle de hauteur des convoyeurs, la détection de palettes et les applications AGV.',
+          it: 'Il ZX-TD0200N utilizza la tecnologia Time-of-Flight (TOF) per offrire un rilevamento affidabile su bersagli multi-materiale e multicolore fino a 2 metri — dove i sensori LED falliscono. Perfetto per il controllo dell\'altezza dei nastri trasportatori, il rilevamento di pallet e le applicazioni AGV.',
         },
         features: {
           en: [
@@ -176,6 +208,24 @@ export const productLines: ProductLineData[] = [
             'IP64-Schutz — industrietauglich',
             'Betrieb: −10°C bis 55°C (kein Einfrieren)',
             'Lichtquelle: Laser Rot 650nm, Klasse 2',
+          ],
+          fr: [
+            'Principe TOF (Time-of-Flight) — indépendant du matériau et de la couleur',
+            'Portée de détection : 100–2000 mm',
+            'Taille du spot : 5mm @ 200mm — faisceau focalisé',
+            '< 1ms de réponse pour le contrôle en temps réel',
+            'Protection IP64 — qualité industrielle',
+            'Fonctionnement : −10°C à 55°C (sans gel)',
+            'Source lumineuse : Laser Rouge 650nm, Classe 2',
+          ],
+          it: [
+            'Principio TOF (Time-of-Flight) — indipendente dal materiale e dal colore',
+            'Portata di rilevamento: 100–2000 mm',
+            'Dimensione del punto: 5mm @ 200mm — fascio focalizzato',
+            '< 1ms di risposta per il controllo in tempo reale',
+            'Protezione IP64 — grado industriale',
+            'Funzionamento: −10°C a 55°C (senza congelamento)',
+            'Sorgente luminosa: Laser Rosso 650nm, Classe 2',
           ],
         },
         specs: [
@@ -281,6 +331,18 @@ export const productLines: ProductLineData[] = [
           icon: '📦',
         },
       ],
+      fr: [
+        { title: 'Surveillance des Convoyeurs', description: 'Détectez la hauteur, la présence et les espaces des colis sur les lignes de convoyeurs à grande vitesse sans faux déclenchements dus aux surfaces des courroies ou à la lumière ambiante.', icon: '🏭' },
+        { title: 'Navigation AGV & Robotique', description: 'Fournissez un retour de distance précis pour les véhicules à guidage autonome et les bras robotiques nécessitant une détection d\'obstacles fiable jusqu\'à 2 mètres.', icon: '🤖' },
+        { title: 'Inspection de Composants PCB', description: 'La taille de spot ultra-fine de 0,1mm permet la détection de micro-composants sur les circuits imprimés — essentiel pour les lignes de technologie de montage en surface.', icon: '🔬' },
+        { title: 'Détection de Palettes & Étagères', description: 'Confirmez la présence et le positionnement des palettes dans les systèmes de rayonnage d\'entrepôt, avec une détection TOF indépendante de la couleur pour tous les matériaux de palette.', icon: '📦' },
+      ],
+      it: [
+        { title: 'Monitoraggio Nastri Trasportatori', description: 'Rilevate altezza, presenza e spazi dei pacchi su linee di trasporto ad alta velocità senza falsi trigger da superfici del nastro o luce ambientale.', icon: '🏭' },
+        { title: 'Navigazione AGV & Robot', description: 'Fornite feedback di distanza preciso per veicoli a guida automatica e bracci robotici che richiedono un rilevamento affidabile degli ostacoli fino a 2 metri.', icon: '🤖' },
+        { title: 'Ispezione Componenti PCB', description: 'La dimensione del punto ultra-fine di 0,1mm consente il rilevamento di micro-componenti su circuiti stampati — critico per le linee di tecnologia SMT.', icon: '🔬' },
+        { title: 'Rilevamento Pallet & Scaffali', description: 'Confermate la presenza e il posizionamento dei pallet nei sistemi di scaffalatura di magazzino, con rilevamento TOF indipendente dal colore per tutti i materiali dei pallet.', icon: '📦' },
+      ],
     },
   },
 
@@ -291,12 +353,16 @@ export const productLines: ProductLineData[] = [
       ko: '고정형 산업용 스캐너',
       'zh-TW': '固定式工業掃描器',
       de: 'Stationäre Industriescanner',
+      fr: 'Scanners Industriels Fixes',
+      it: 'Scanner Industriali Fissi',
     },
     tagline: {
       en: 'Always-on intelligence for automated lines.',
       ko: '자동화 라인을 위한 상시 작동 인텔리전스.',
       'zh-TW': '自動化生產線的持續智慧監控。',
       de: 'Dauerbetrieb-Intelligenz für automatisierte Linien.',
+      fr: 'Intelligence permanente pour les lignes automatisées.',
+      it: 'Intelligenza sempre attiva per le linee automatizzate.',
     },
     heroImage: '/images/products/zx-3020-sheet.png',
     products: [
@@ -308,18 +374,24 @@ export const productLines: ProductLineData[] = [
           ko: '2D 이미지 고정형 산업용 스캐너',
           'zh-TW': '2D 影像固定式工業掃描器',
           de: '2D-Bild-Stationär-Industriescanner',
+          fr: 'Scanner Industriel Fixe à Image 2D',
+          it: 'Scanner Industriale Fisso a Immagine 2D',
         },
         tagline: {
           en: 'Fast, precise, and drop-proof.',
           ko: '빠르고, 정밀하며, 낙하 방지.',
           'zh-TW': '快速、精確且防摔。',
           de: 'Schnell, präzise und sturzsicher.',
+          fr: 'Rapide, précis et résistant aux chutes.',
+          it: 'Veloce, preciso e resistente alle cadute.',
         },
         description: {
           en: 'The ZX-1060 delivers real-time solutions with fast, precise focusing for high-throughput automation lines. IP67-rated and validated to survive 1.8m drops, it thrives in demanding factory environments where uptime is non-negotiable.',
           ko: 'ZX-1060은 고처리량 자동화 라인을 위해 빠르고 정밀한 포커싱으로 실시간 솔루션을 제공합니다. IP67 등급이며 1.8m 낙하를 견딜 수 있어, 가동 시간이 필수적인 까다로운 공장 환경에서 활약합니다.',
           'zh-TW': 'ZX-1060 為高吞吐量自動化生產線提供具有快速精準對焦的即時解決方案。IP67 等級，經驗證可承受 1.8m 跌落，在對停機時間要求嚴格的惡劣工廠環境中表現卓越。',
           de: 'Der ZX-1060 liefert Echtzeit-Lösungen mit schneller, präziser Fokussierung für Hochdurchsatz-Automatisierungslinien. IP67-zertifiziert und für 1,8m-Stürze validiert, bewährt er sich in anspruchsvollen Fabrikumgebungen.',
+          fr: 'Le ZX-1060 offre des solutions en temps réel avec une mise au point rapide et précise pour les lignes d\'automatisation à haut débit. Certifié IP67 et validé pour résister à des chutes de 1,8m, il excelle dans les environnements d\'usine exigeants où les arrêts de production ne sont pas tolérés.',
+          it: 'Il ZX-1060 offre soluzioni in tempo reale con messa a fuoco rapida e precisa per linee di automazione ad alto rendimento. Certificato IP67 e validato per resistere a cadute di 1,8m, eccelle negli ambienti di fabbrica più esigenti dove i fermi produzione non sono tollerati.',
         },
         features: {
           en: [
@@ -354,6 +426,22 @@ export const productLines: ProductLineData[] = [
             'Modbus, Ethernet/IP, PROFINET-Unterstützung',
             'USB-A & WLAN Auto-Forward Konnektivität',
           ],
+          fr: [
+            'Mise au point automatique rapide et précise en temps réel',
+            'Résiste à plusieurs tests de chute de 1,8m',
+            'IP67 — étanche à la poussière & immersion complète dans l\'eau',
+            'Décodage DPM avancé (marquage direct de pièces)',
+            'Support Modbus, Ethernet/IP, PROFINET',
+            'Connectivité USB-A & WiFi Auto-Forward',
+          ],
+          it: [
+            'Messa a fuoco automatica rapida e precisa in tempo reale',
+            'Resiste a più test di caduta da 1,8m',
+            'IP67 — a tenuta di polvere & immersione completa in acqua',
+            'Decodifica DPM avanzata (marcatura diretta di parti)',
+            'Supporto Modbus, Ethernet/IP, PROFINET',
+            'Connettività USB-A & WiFi Auto-Forward',
+          ],
         },
         specs: [
           { label: 'Image Sensor', value: 'CMOS' },
@@ -374,18 +462,24 @@ export const productLines: ProductLineData[] = [
           ko: '2D 이미지 고정형 산업용 스캐너',
           'zh-TW': '2D 影像固定式工業掃描器',
           de: '2D-Bild-Stationär-Industriescanner',
+          fr: 'Scanner Industriel Fixe à Image 2D',
+          it: 'Scanner Industriale Fisso a Immagine 2D',
         },
         tagline: {
           en: 'AI vision. Adaptive focus. Zero dead angles.',
           ko: 'AI 비전. 적응형 포커스. 제로 데드 앵글.',
           'zh-TW': 'AI 視覺。自適應對焦。零死角。',
           de: 'KI-Vision. Adaptiver Fokus. Null tote Winkel.',
+          fr: 'Vision IA. Mise au point adaptative. Zéro angle mort.',
+          it: 'Visione AI. Messa a fuoco adattiva. Zero angoli morti.',
         },
         description: {
           en: 'The ZX-3020 redefines fixed-mount scanning with AI-powered image processing, one-key smart light setup, and flexible 10–100cm working distance with zero dead zones. Four light sources with 8 configurable modes adapt to any barcode, DPM, or surface.',
           ko: 'ZX-3020은 AI 기반 이미지 처리, 원키 스마트 조명 설정, 그리고 제로 데드존의 10–100cm 유연한 작업 거리로 고정형 스캐닝을 재정의합니다. 8가지 구성 가능한 모드의 4가지 광원이 모든 바코드, DPM 또는 표면에 적응합니다.',
           'zh-TW': 'ZX-3020 憑藉 AI 影像處理、一鍵智慧光源設定和 10–100cm 零死角彈性工作距離，重新定義固定式掃描。4 組光源配備 8 種可配置模式，適應任何條碼、DPM 或表面。',
           de: 'Der ZX-3020 definiert stationäres Scannen neu mit KI-gestützter Bildverarbeitung, Ein-Tasten-Smart-Lichteinstellung und flexibler 10–100cm Arbeitsdistanz ohne tote Zonen. Vier Lichtquellen mit 8 konfigurierbaren Modi passen sich an jeden Barcode, DPM oder jede Oberfläche an.',
+          fr: 'Le ZX-3020 redéfinit la numérisation en montage fixe avec un traitement d\'image alimenté par IA, une configuration d\'éclairage intelligent à une touche, et une distance de travail flexible de 10–100cm sans zones mortes. Quatre sources lumineuses avec 8 modes configurables s\'adaptent à tout code-barres, DPM ou surface.',
+          it: 'Il ZX-3020 ridefinisce la scansione a montaggio fisso con elaborazione delle immagini basata su AI, configurazione dell\'illuminazione intelligente con un tasto e distanza di lavoro flessibile da 10–100cm senza zone morte. Quattro sorgenti luminose con 8 modalità configurabili si adattano a qualsiasi codice a barre, DPM o superficie.',
         },
         features: {
           en: [
@@ -424,6 +518,24 @@ export const productLines: ProductLineData[] = [
             'RS232, Ethernet, Profibus, EtherNet/IP, PROFINET, EtherCAT',
             'CE, FCC, VCCI, BSMI, UKCA zertifiziert',
           ],
+          fr: [
+            'Traitement d\'image IA — reconnaissance instantanée des couleurs et codes',
+            'Mise au point intelligente : objectif réglable, DOF 100–1500mm',
+            'Configuration de source lumineuse à une touche',
+            '4 sources lumineuses × 8 modes pour toute surface',
+            'Distance de travail flexible de 10–100cm, zéro angle mort',
+            'RS232, Ethernet, Profibus, EtherNet/IP, PROFINET, EtherCAT',
+            'Certifié CE, FCC, VCCI, BSMI, UKCA',
+          ],
+          it: [
+            'Elaborazione immagini AI — riconoscimento istantaneo di colori e codici',
+            'Messa a fuoco intelligente: obiettivo regolabile, DOF 100–1500mm',
+            'Configurazione sorgente luminosa con un tasto',
+            '4 sorgenti luminose × 8 modalità per qualsiasi superficie',
+            'Distanza di lavoro flessibile 10–100cm, zero angoli morti',
+            'RS232, Ethernet, Profibus, EtherNet/IP, PROFINET, EtherCAT',
+            'Certificato CE, FCC, VCCI, BSMI, UKCA',
+          ],
         },
         specs: [
           { label: 'Image Sensor', value: '1280 × 800 CMOS' },
@@ -446,18 +558,24 @@ export const productLines: ProductLineData[] = [
           ko: '2D 이미지 고정형 산업용 스캐너',
           'zh-TW': '2D 影像固定式工業掃描器',
           de: '2D-Bild-Stationär-Industriescanner',
+          fr: 'Scanner Industriel Fixe à Image 2D',
+          it: 'Scanner Industriale Fisso a Immagine 2D',
         },
         tagline: {
           en: 'Quad-core speed meets wide-field vision.',
           ko: '쿼드 코어 속도가 광각 비전을 만나다.',
           'zh-TW': '四核心速度結合寬視野視覺。',
           de: 'Quad-Core-Geschwindigkeit trifft Weitwinkel-Vision.',
+          fr: 'Vitesse quad-core et vision grand angle.',
+          it: 'Velocità quad-core e visione grandangolare.',
         },
         description: {
           en: 'The ZX-3050 combines a quad-linear high-speed processor with a high-resolution sensor, dual red and white lighting, and a wide field of view to deliver industrial-grade scanning at unmatched throughput. IP65-rated for water and dust protection.',
           ko: 'ZX-3050은 쿼드 리니어 고속 프로세서와 고해상도 센서, 이중 적색/백색 조명, 광각 시야를 결합하여 탁월한 처리량으로 산업용 스캐닝을 제공합니다. 방수 및 방진 IP65 등급.',
           'zh-TW': 'ZX-3050 結合四線性高速處理器和高解析度感測器、紅白雙光照明及寬視野，以無與倫比的吞吐量提供工業級掃描。IP65 等級，防水防塵。',
           de: 'Der ZX-3050 kombiniert einen Quad-linearen Hochgeschwindigkeitsprozessor mit einem hochauflösenden Sensor, dualer Rot-Weiß-Beleuchtung und Weitwinkel-Sichtfeld für industrielles Scannen mit unübertroffenem Durchsatz. IP65-zertifiziert.',
+          fr: 'Le ZX-3050 combine un processeur quad-linéaire haute vitesse avec un capteur haute résolution, un éclairage rouge et blanc double, et un large champ de vision pour offrir une numérisation industrielle à un débit inégalé. Certifié IP65 pour la protection contre l\'eau et la poussière.',
+          it: 'Il ZX-3050 combina un processore quad-lineare ad alta velocità con un sensore ad alta risoluzione, doppia illuminazione rosso e bianco e un ampio campo visivo per offrire una scansione industriale con throughput senza pari. Certificato IP65 per la protezione da acqua e polvere.',
         },
         features: {
           en: [
@@ -491,6 +609,22 @@ export const productLines: ProductLineData[] = [
             'Weites Sichtfeld mit großer Schärfentiefe',
             'Ein-Touch-Autofokus-Einrichtung',
             'IP65 industrietauglicher Wasser- & Staubschutz',
+          ],
+          fr: [
+            'Processeur haute vitesse quad-linéaire',
+            'Capteur CMOS haute résolution',
+            'Double éclairage : rouge + blanc',
+            'Grand champ de vision avec grande profondeur de champ',
+            'Configuration autofocus en un toucher',
+            'Protection industrielle IP65 contre l\'eau & la poussière',
+          ],
+          it: [
+            'Processore ad alta velocità quad-lineare',
+            'Sensore CMOS ad alta risoluzione',
+            'Doppia illuminazione: rosso + bianco',
+            'Ampio campo visivo con grande profondità di campo',
+            'Configurazione autofocus con un tocco',
+            'Protezione industriale IP65 contro acqua e polvere',
           ],
         },
         specs: [
@@ -594,6 +728,18 @@ export const productLines: ProductLineData[] = [
           icon: '⚡',
         },
       ],
+      fr: [
+        { title: 'Lignes d\'Assemblage Automobile', description: 'Suivez les plaques VIN, les étiquettes de pièces et les codes DPM estampés directement sur les blocs moteur et les châssis — même avec des surfaces huileuses, graisseuses ou laser-gravées.', icon: '🚗' },
+        { title: 'Emballage Pharmaceutique', description: 'Vérifiez les codes DataMatrix 2D et QR sur les blisters et les flacons à la vitesse de ligne. Garantissez la conformité de traçabilité pour chaque article sérialisé.', icon: '💊' },
+        { title: 'Centres de Traitement E-Commerce', description: 'Capturez les codes-barres sur des colis se déplaçant à grande vitesse sur plusieurs lignes de convoyeurs avec zéro angle mort et mise au point adaptative.', icon: '📫' },
+        { title: 'Fabrication Électronique', description: 'Lisez les micro codes DPM gravés au laser ou marqués chimiquement sur les PCB, puces et connecteurs avec un traitement d\'image avancé.', icon: '⚡' },
+      ],
+      it: [
+        { title: 'Linee di Assemblaggio Automotive', description: 'Tracciate targhe VIN, etichette di parti e codici DPM stampati direttamente su blocchi motore e telai — anche con superfici oleose, sgrassate o incise al laser.', icon: '🚗' },
+        { title: 'Confezionamento Farmaceutico', description: 'Verificate codici DataMatrix 2D e QR su blister e flaconi alla velocità della linea. Garantite la conformità alla tracciabilità per ogni articolo serializzato.', icon: '💊' },
+        { title: 'Centri di Fulfillment E-Commerce', description: 'Catturate codici a barre su pacchi che si muovono ad alta velocità su più corsie di trasporto con zero angoli morti e messa a fuoco adattiva.', icon: '📫' },
+        { title: 'Produzione Elettronica', description: 'Leggete micro codici DPM incisi al laser o marcati chimicamente su PCB, chip e connettori con elaborazione avanzata delle immagini.', icon: '⚡' },
+      ],
     },
   },
 
@@ -604,12 +750,16 @@ export const productLines: ProductLineData[] = [
       ko: '스캔 모듈',
       'zh-TW': '掃描模組',
       de: 'Scan-Module',
+      fr: 'Modules de Scan',
+      it: 'Moduli di Scansione',
     },
     tagline: {
       en: 'Embed scanning intelligence anywhere.',
       ko: '어디서나 스캔 인텔리전스를 내장.',
       'zh-TW': '隨處嵌入掃描智慧。',
       de: 'Scan-Intelligenz überall einbetten.',
+      fr: 'Intégrez l\'intelligence de numérisation partout.',
+      it: 'Integra l\'intelligenza di scansione ovunque.',
     },
     heroImage: '/images/products/product-lineup.png',
     products: [
@@ -621,18 +771,24 @@ export const productLines: ProductLineData[] = [
           ko: '2D 이미지 스캔 모듈',
           'zh-TW': '2D 影像掃描模組',
           de: '2D-Bild-Scan-Modul',
+          fr: 'Module de Scan à Image 2D',
+          it: 'Modulo di Scansione a Immagine 2D',
         },
         tagline: {
           en: 'The brain behind your kiosk or self-checkout.',
           ko: '키오스크 또는 셀프체크아웃의 두뇌.',
           'zh-TW': '您的自助服務機或自助結帳背後的大腦。',
           de: 'Das Gehirn hinter Ihrem Kiosk oder Self-Checkout.',
+          fr: 'Le cerveau de votre kiosque ou self-checkout.',
+          it: 'Il cervello del tuo chiosco o self-checkout.',
         },
         description: {
           en: 'Z-5552 Plus is a high-performance scan engine designed for embedding into kiosks, ATMs, vending machines, POS terminals, and self-checkout systems. Exceptional motion tolerance and screen-barcode reading capability make it ideal for modern omnichannel retail and smart hospitality.',
           ko: 'Z-5552 Plus는 키오스크, ATM, 자판기, POS 단말기 및 셀프 체크아웃 시스템에 내장하기 위해 설계된 고성능 스캔 엔진입니다. 탁월한 모션 내성과 화면 바코드 읽기 기능으로 현대적인 옴니채널 소매 및 스마트 호스피탈리티에 이상적입니다.',
           'zh-TW': 'Z-5552 Plus 是一款高效能掃描引擎，專為嵌入自助服務機、ATM、自動販賣機、POS 終端機和自助結帳系統而設計。卓越的動態容錯能力和螢幕條碼讀取功能，使其成為現代全通路零售和智慧款待業的理想選擇。',
           de: 'Z-5552 Plus ist ein leistungsstarkes Scan-Engine für den Einbau in Kioske, Geldautomaten, Verkaufsautomaten, POS-Terminals und Self-Checkout-Systeme. Außergewöhnliche Bewegungstoleranz und Bildschirm-Barcode-Lesefähigkeit machen es ideal für modernen Omnichannel-Einzelhandel.',
+          fr: 'Le Z-5552 Plus est un moteur de scan haute performance conçu pour être intégré dans des kiosques, distributeurs automatiques, terminaux POS et systèmes self-checkout. Sa tolérance exceptionnelle aux mouvements et sa capacité à lire les codes-barres sur écran le rendent idéal pour le commerce omnicanal moderne et l\'hôtellerie intelligente.',
+          it: 'Z-5552 Plus è un motore di scansione ad alte prestazioni progettato per essere integrato in chioschi, bancomat, distributori automatici, terminali POS e sistemi self-checkout. L\'eccezionale tolleranza al movimento e la capacità di lettura dei codici a barre su schermo lo rendono ideale per il retail omnicanale moderno e l\'ospitalità intelligente.',
         },
         features: {
           en: [
@@ -666,6 +822,22 @@ export const productLines: ProductLineData[] = [
             'Konzipiert für Kiosk-, ATM- & POS-Integration',
             'Weitwinkel 1280 × 800 CMOS-Sensor',
             'Flexibler DOF: 40–440mm (Code 39 3mil)',
+          ],
+          fr: [
+            'Tolérance de mouvement exceptionnelle pour les cibles mobiles',
+            'Lit les codes 1D & 2D sur les écrans (téléphone, tablette, moniteur)',
+            'Capture les codes-barres sur toute surface d\'affichage',
+            'Conçu pour l\'intégration kiosque, ATM & POS',
+            'Capteur CMOS grand angle 1280 × 800',
+            'DOF flexible : 40–440mm (Code 39 3mil)',
+          ],
+          it: [
+            'Tolleranza al movimento eccezionale per bersagli in movimento',
+            'Legge codici 1D & 2D da schermi (telefono, tablet, monitor)',
+            'Cattura codici a barre da qualsiasi superficie display',
+            'Progettato per l\'integrazione in chioschi, bancomat & POS',
+            'Sensore CMOS grandangolare 1280 × 800',
+            'DOF flessibile: 40–440mm (Code 39 3mil)',
           ],
         },
         specs: [
@@ -770,6 +942,18 @@ export const productLines: ProductLineData[] = [
           icon: '🎫',
         },
       ],
+      fr: [
+        { title: 'Self-Checkout & POS de Vente au Détail', description: 'Offrez une numérisation rapide et fiable dans les kiosques self-checkout et les terminaux POS — lit les étiquettes imprimées et les codes-barres de portefeuille mobile depuis n\'importe quel angle.', icon: '🏪' },
+        { title: 'Distributeurs Intelligents & DAB', description: 'Activez l\'échange de QR codes sans contact dans les distributeurs et DAB, en capturant les codes depuis des sources endommagées, usées ou affichées à l\'écran.', icon: '🏧' },
+        { title: 'Kiosques Santé & Identification Patient', description: 'Lisez de manière fiable les codes-barres des bracelets patients, les cartes d\'assurance et les ordonnances électroniques dans des environnements cliniques à haute exigence hygiénique.', icon: '🏥' },
+        { title: 'Portiques d\'Événements & Billetterie', description: 'Traitez les billets mobiles, passes QR et codes NFC aux points de contrôle d\'accès avec zéro raté sous des conditions d\'éclairage variées.', icon: '🎫' },
+      ],
+      it: [
+        { title: 'Self-Checkout & POS al Dettaglio', description: 'Offrite una scansione rapida e affidabile nei chioschi self-checkout e nei terminali POS al dettaglio — legge etichette stampate e codici a barre da portafoglio mobile da qualsiasi angolo.', icon: '🏪' },
+        { title: 'Distributori Intelligenti & Bancomat', description: 'Abilitate il riscatto di QR code contactless in distributori automatici e bancomat, catturando codici da fonti danneggiate, consumate o visualizzate su schermo.', icon: '🏧' },
+        { title: 'Chioschi Sanitari & ID Paziente', description: 'Leggete in modo affidabile codici a barre dei braccialetti pazienti, carte assicurative ed e-prescrizioni in ambienti clinici ad alta richiesta igienica.', icon: '🏥' },
+        { title: 'Portali per Eventi & Biglietteria', description: 'Elaborate biglietti mobili, pass QR e codici NFC ai punti di controllo accessi con zero mancate letture sotto condizioni di illuminazione variabili.', icon: '🎫' },
+      ],
     },
   },
 
@@ -780,12 +964,16 @@ export const productLines: ProductLineData[] = [
       ko: '핸드헬드 스캐너',
       'zh-TW': '手持式掃描器',
       de: 'Handscanner',
+      fr: 'Scanners Portables',
+      it: 'Scanner Portatili',
     },
     tagline: {
       en: 'Built rugged. Reads everything.',
       ko: '견고하게 제작. 모든 것을 읽다.',
       'zh-TW': '堅固耐用。讀取一切。',
       de: 'Robust gebaut. Liest alles.',
+      fr: 'Robuste. Lit tout.',
+      it: 'Costruito robusto. Legge tutto.',
     },
     heroImage: '/images/products/handheld-lineup.png',
     products: [
@@ -797,18 +985,24 @@ export const productLines: ProductLineData[] = [
           ko: '2D 이미지 핸드헬드 스캐너 (풀레인지)',
           'zh-TW': '2D 影像手持掃描器（全距離）',
           de: '2D-Bild-Handscanner (Vollbereich)',
+          fr: 'Scanner Portable à Image 2D (Pleine Portée)',
+          it: 'Scanner Portatile a Immagine 2D (Portata Completa)',
         },
         tagline: {
           en: 'Dual-lens. From 14cm to 3 meters.',
           ko: '듀얼 렌즈. 14cm에서 3미터까지.',
           'zh-TW': '雙鏡頭。從 14cm 到 3 公尺。',
           de: 'Dual-Linse. Von 14cm bis 3 Meter.',
+          fr: 'Double objectif. De 14cm à 3 mètres.',
+          it: 'Doppio obiettivo. Da 14cm a 3 metri.',
         },
         description: {
           en: 'The Z-3572 features a unique dual-CMOS lens system giving it full-range reading capability from close-up 14cm detail work to warehouse-spanning 3-meter distance reads. IP54-rated rugged housing survives drops, dust, and demanding environments.',
           ko: 'Z-3572는 독특한 듀얼 CMOS 렌즈 시스템으로 근접 14cm 세부 작업에서 창고를 가로지르는 3미터 거리 읽기까지 전 범위 읽기 기능을 제공합니다. IP54 등급 견고한 하우징으로 낙하, 먼지, 까다로운 환경을 견딥니다.',
           'zh-TW': 'Z-3572 具備獨特的雙 CMOS 鏡頭系統，提供全距離讀取能力，從近距離 14cm 細節工作到橫跨倉庫 3 公尺距離讀取。IP54 等級堅固外殼可承受跌落、灰塵和惡劣環境。',
           de: 'Der Z-3572 verfügt über ein einzigartiges Dual-CMOS-Linsensystem, das Vollbereichs-Lesefähigkeit von 14cm Nahaufnahme-Detailarbeit bis zu 3-Meter-Fernlesen im Lager bietet. IP54-zertifiziertes robustes Gehäuse übersteht Stürze, Staub und anspruchsvolle Umgebungen.',
+          fr: 'Le Z-3572 dispose d\'un système unique à double objectif CMOS offrant une capacité de lecture pleine portée, du travail de détail en gros plan à 14cm aux lectures à 3 mètres pour les entrepôts. Le boîtier robuste classé IP54 résiste aux chutes, à la poussière et aux environnements exigeants.',
+          it: 'Il Z-3572 dispone di un sistema unico a doppio obiettivo CMOS che offre capacità di lettura a portata completa, dal lavoro di dettaglio ravvicinato a 14cm alle letture a distanza di 3 metri in magazzino. La robusta custodia certificata IP54 resiste a cadute, polvere e ambienti impegnativi.',
         },
         features: {
           en: [
@@ -843,6 +1037,22 @@ export const productLines: ProductLineData[] = [
             'Robustes Gehäuse für Höchstleistung überall',
             'Dekodiert alle Standard-1D- & 2D-Symbologien',
           ],
+          fr: [
+            'Double objectif CMOS : courte portée + longue portée en un seul appareil',
+            'Plage de lecture complète : 14cm à 300cm (Code 128)',
+            'DOF étendu pour des espaces de travail polyvalents',
+            'IP54 — résistant à la poussière & aux éclaboussures',
+            'Boîtier robuste pour des performances maximales partout',
+            'Décode toutes les symbologies 1D & 2D standard',
+          ],
+          it: [
+            'Doppio obiettivo CMOS: corto raggio + lungo raggio in un solo dispositivo',
+            'Portata di lettura completa: 14cm a 300cm (Code 128)',
+            'DOF esteso per spazi di lavoro versatili',
+            'IP54 — resistente a polvere & spruzzi',
+            'Custodia robusta per prestazioni ottimali ovunque',
+            'Decodifica tutte le simbologie 1D & 2D standard',
+          ],
         },
         specs: [
           { label: 'Image Sensor', value: '1280 × 1080 Dual-CMOS' },
@@ -863,18 +1073,24 @@ export const productLines: ProductLineData[] = [
           ko: '2D 이미지 핸드헬드 스캐너',
           'zh-TW': '2D 影像手持掃描器',
           de: '2D-Bild-Handscanner',
+          fr: 'Scanner Portable à Image 2D',
+          it: 'Scanner Portatile a Immagine 2D',
         },
         tagline: {
           en: 'Drop-proof. Waterproof. DPM-ready.',
           ko: '낙하 방지. 방수. DPM 준비.',
           'zh-TW': '防摔。防水。支援 DPM。',
           de: 'Sturzsicher. Wasserdicht. DPM-bereit.',
+          fr: 'Résistant aux chutes. Étanche. Prêt pour DPM.',
+          it: 'Resistente alle cadute. Impermeabile. Pronto per DPM.',
         },
         description: {
           en: 'The Z-3502 is engineered for the toughest handheld environments. IP54-rated and verified to survive 1.8m drops to concrete. Flexible lighting adapts to any reflective or non-reflective surface, while advanced DPM decoding handles direct part marks in automotive, aerospace, and electronics.',
           ko: 'Z-3502는 가장 까다로운 핸드헬드 환경을 위해 설계되었습니다. IP54 등급이며 콘크리트에 1.8m 낙하를 견디는 것이 검증되었습니다. 유연한 조명이 반사 또는 비반사 표면에 적응하며, 고급 DPM 디코딩은 자동차, 항공우주 및 전자 산업의 직접 부품 마크를 처리합니다.',
           'zh-TW': 'Z-3502 專為最嚴苛的手持環境而設計。IP54 等級，經驗證可承受 1.8m 跌落至混凝土地面。彈性照明適應任何反射或非反射表面，同時先進的 DPM 解碼處理汽車、航太和電子行業的直接零件標記。',
           de: 'Der Z-3502 ist für die härtesten Handscanner-Umgebungen konzipiert. IP54-zertifiziert und validiert für 1,8m-Stürze auf Beton. Flexible Beleuchtung passt sich reflektierenden und nicht reflektierenden Oberflächen an, während die DPM-Dekodierung direkte Teilemarkierungen in Automobil-, Luft- und Elektronikbereichen verarbeitet.',
+          fr: 'Le Z-3502 est conçu pour les environnements portables les plus difficiles. Classé IP54 et vérifié pour résister à des chutes de 1,8m sur béton. L\'éclairage flexible s\'adapte à toute surface réfléchissante ou non réfléchissante, tandis que le décodage DPM avancé gère les marquages directs de pièces dans l\'automobile, l\'aérospatiale et l\'électronique.',
+          it: 'Il Z-3502 è progettato per gli ambienti portatili più difficili. Certificato IP54 e verificato per resistere a cadute di 1,8m sul cemento. L\'illuminazione flessibile si adatta a qualsiasi superficie riflettente o non riflettente, mentre la decodifica DPM avanzata gestisce le marcature dirette di parti in ambito automotive, aerospaziale ed elettronico.',
         },
         features: {
           en: [
@@ -908,6 +1124,22 @@ export const productLines: ProductLineData[] = [
             'Erweiterte DPM-Dekodierung für gestanzte/geätzte Markierungen',
             '1280 × 1080 CMOS hochauflösender Sensor',
             'Lesebereich bis zu 1.000mm (Code GR 13mil)',
+          ],
+          fr: [
+            'IP54 : étanche à la poussière & protégé contre les jets d\'eau',
+            'Résiste à des chutes de 1,8m sur béton — plusieurs fois',
+            'Éclairage flexible pour surfaces réfléchissantes & non réfléchissantes',
+            'Décodage DPM avancé pour les marquages estampés/gravés',
+            'Capteur CMOS haute résolution 1280 × 1080',
+            'Portée de lecture jusqu\'à 1 000mm (Code GR 13mil)',
+          ],
+          it: [
+            'IP54: a tenuta di polvere & protetto dai getti d\'acqua',
+            'Resiste a cadute di 1,8m sul cemento — più volte',
+            'Illuminazione flessibile per superfici riflettenti & non riflettenti',
+            'Decodifica DPM avanzata per marcature stampate/incise',
+            'Sensore CMOS ad alta risoluzione 1280 × 1080',
+            'Portata di lettura fino a 1.000mm (Code GR 13mil)',
           ],
         },
         specs: [
@@ -1010,6 +1242,18 @@ export const productLines: ProductLineData[] = [
           description: 'Inventurzählungen und Wareneingangsprozesse in Lagerräumen und Distributionszentren mit hochbewegungstoleranter Scan-Technologie beschleunigen.',
           icon: '🏬',
         },
+      ],
+      fr: [
+        { title: 'Entrepôt & Logistique', description: 'Scannez les étiquettes au niveau du sol ou sur les rayonnages en hauteur avec le système à double objectif Z-3572, éliminant le besoin de plusieurs scanners dans une même installation.', icon: '🏭' },
+        { title: 'Service de Terrain & Maintenance', description: 'Lisez les codes DPM sur les machines, tuyaux et composants dans des espaces étroits ou des conditions extérieures difficiles avec le boîtier robuste IP54 du Z-3502.', icon: '🔧' },
+        { title: 'MRO Aéronautique & Défense', description: 'Suivez les pièces d\'aéronef sérialisées avec des codes DPM gravés au laser que le Z-3502 décode de manière fiable — même sur des surfaces courbes, anodisées ou à faible contraste.', icon: '✈️' },
+        { title: 'Vente au Détail & Gestion des Stocks', description: 'Accélérez les inventaires et les flux de réception dans les arrière-boutiques et les centres de distribution avec une numérisation à haute tolérance de mouvement.', icon: '🏬' },
+      ],
+      it: [
+        { title: 'Magazzino & Logistica', description: 'Scansionate etichette a livello del suolo o su scaffalature in altezza con il sistema a doppio obiettivo Z-3572, eliminando la necessità di più scanner in un\'unica struttura.', icon: '🏭' },
+        { title: 'Assistenza Tecnica & Manutenzione', description: 'Leggete codici DPM su macchinari, tubi e componenti in spazi angusti o condizioni esterne difficili con la robusta custodia IP54 dello Z-3502.', icon: '🔧' },
+        { title: 'MRO Aeronautica & Difesa', description: 'Tracciate parti di aeromobili serializzate con codici DPM incisi al laser che il Z-3502 decodifica in modo affidabile — anche su superfici curve, anodizzate o a basso contrasto.', icon: '✈️' },
+        { title: 'Retail & Gestione Inventario', description: 'Accelerate le ricognizioni cicliche e i flussi di ricevimento nei magazzini e nei centri di distribuzione con una scansione ad alta tolleranza al movimento.', icon: '🏬' },
       ],
     },
   },

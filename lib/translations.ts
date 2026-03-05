@@ -1,4 +1,4 @@
-export type Lang = 'en' | 'ko' | 'zh-TW' | 'de';
+export type Lang = 'en' | 'ko' | 'zh-TW' | 'de' | 'fr' | 'it';
 
 export const translations = {
   en: {
@@ -239,6 +239,166 @@ export const translations = {
     keyFeatures: '主要特點',
     viewSpecs: '查看完整規格',
     learnMore: '了解更多',
+  },
+
+  fr: {
+    nav: {
+      laserSensors: 'Capteurs Laser',
+      fixedScanners: 'Scanners Fixes',
+      scanModules: 'Modules de Scan',
+      handheldScanners: 'Scanners Portables',
+    },
+    hero: {
+      tagline: 'Transformez Vos Données en Insights Instantanément',
+      subtitle: 'La numérisation intelligente libère des données précieuses et exploitables tout au long de chaque opération.',
+      cta: 'Explorer les Produits',
+    },
+    productNav: {
+      overview: 'Aperçu',
+      specs: 'Spécifications',
+      applications: 'Applications',
+    },
+    whyLaser: {
+      badge: 'Avantage Technologique',
+      title: 'Pourquoi le Capteur Laser ?',
+      subtitle: 'Laser BGS (Suppression d\'Arrière-plan) vs LED Rouge — conçu pour l\'automatisation industrielle de précision.',
+      laser: 'Laser BGS',
+      led: 'LED Rouge',
+      laserDesc: 'Une technologie de détection haute précision utilisant des faisceaux laser focalisés pour détecter les objets par distance, ignorant efficacement les arrière-plans parasites.',
+      ledDesc: 'Une solution de détection standard utilisant un faisceau de lumière rouge visible plus diffus, généralement adapté à la détection générale à courte portée.',
+      comparison: [
+        {
+          category: 'Précision du faisceau & taille du spot',
+          laserVal: 'Point lumineux très concentré et petit pour détecter des pièces minuscules.',
+          ledVal: 'Faisceau plus large et plus diffus.',
+          laserWin: true,
+        },
+        {
+          category: 'Portée & profondeur de détection',
+          laserVal: 'Distances de détection étendues et résolution en profondeur supérieure.',
+          ledVal: 'Portée limitée et résolution en profondeur standard.',
+          laserWin: true,
+        },
+        {
+          category: 'Sensibilité aux matériaux & couleurs',
+          laserVal: 'Nettement moins affecté par la couleur cible ou la réflectivité de surface.',
+          ledVal: 'Peut avoir du mal avec différentes couleurs cibles ou réflectivités de surface.',
+          laserWin: true,
+        },
+      ],
+      advantages: [
+        {
+          title: 'Suppression d\'Arrière-plan Supérieure',
+          desc: 'Ignore tout objet au-delà du point focal défini, éliminant les faux déclenchements des tapis roulants ou des cadres de machines.',
+          icon: 'shield',
+        },
+        {
+          title: 'Détection de Micro-Objets',
+          desc: 'Le faisceau laser étroit permet la détection précise de composants ou de caractéristiques extrêmement petits qu\'un capteur LED ne pourrait pas détecter.',
+          icon: 'target',
+        },
+        {
+          title: 'Fiabilité Opérationnelle',
+          desc: 'Assure des performances constantes dans les environnements à grande vitesse, réduisant les temps d\'arrêt et augmentant le débit global du système.',
+          icon: 'zap',
+        },
+      ],
+    },
+    applications: {
+      title: 'Applications Industrielles',
+      subtitle: 'Conçu pour les environnements où la précision est primordiale.',
+    },
+    contact: {
+      title: 'Contactez-Nous',
+      subtitle: 'Prêt à trouver la bonne solution pour votre opération ?',
+      role: 'Responsable Commercial',
+      email: 'mike.lee@zebex.com',
+      cta: 'Envoyer un E-mail',
+    },
+    specs: 'Spécifications',
+    keyFeatures: 'Caractéristiques Clés',
+    viewSpecs: 'Voir les Spécifications Complètes',
+    learnMore: 'En Savoir Plus',
+  },
+
+  it: {
+    nav: {
+      laserSensors: 'Sensori Laser',
+      fixedScanners: 'Scanner Fissi',
+      scanModules: 'Moduli di Scansione',
+      handheldScanners: 'Scanner Portatili',
+    },
+    hero: {
+      tagline: 'Trasforma gli Input in Insight Istantaneamente',
+      subtitle: 'La scansione intelligente sblocca dati preziosi e actionable in ogni fase operativa.',
+      cta: 'Esplora i Prodotti',
+    },
+    productNav: {
+      overview: 'Panoramica',
+      specs: 'Specifiche',
+      applications: 'Applicazioni',
+    },
+    whyLaser: {
+      badge: 'Vantaggio Tecnologico',
+      title: 'Perché il Sensore Laser?',
+      subtitle: 'Laser BGS (Soppressione dello Sfondo) vs LED Rosso — progettato per l\'automazione industriale di precisione.',
+      laser: 'Laser BGS',
+      led: 'LED Rosso',
+      laserDesc: 'Una tecnologia di rilevamento ad alta precisione che utilizza fasci laser focalizzati per rilevare oggetti in base alla distanza, ignorando efficacemente gli sfondi disturbanti.',
+      ledDesc: 'Una soluzione di rilevamento standard che utilizza un fascio di luce rossa visibile più diffuso, generalmente adatto al rilevamento generico a corto raggio.',
+      comparison: [
+        {
+          category: 'Precisione del Fascio & Dimensione del Punto',
+          laserVal: 'Punto luminoso altamente concentrato e piccolo per rilevare parti minuscole.',
+          ledVal: 'Fascio più ampio e più diffuso.',
+          laserWin: true,
+        },
+        {
+          category: 'Portata & Profondità di Rilevamento',
+          laserVal: 'Distanze di rilevamento estese e risoluzione in profondità superiore.',
+          ledVal: 'Portata limitata e risoluzione in profondità standard.',
+          laserWin: true,
+        },
+        {
+          category: 'Sensibilità a Materiali & Colori',
+          laserVal: 'Significativamente meno influenzato dal colore del bersaglio o dalla riflettività della superficie.',
+          ledVal: 'Può avere difficoltà con colori o riflettività di superficie variabili.',
+          laserWin: true,
+        },
+      ],
+      advantages: [
+        {
+          title: 'Soppressione Superiore dello Sfondo',
+          desc: 'Ignora qualsiasi oggetto oltre il punto focale impostato, eliminando i falsi trigger da nastri trasportatori o telai macchina.',
+          icon: 'shield',
+        },
+        {
+          title: 'Rilevamento di Micro-Oggetti',
+          desc: 'Il fascio laser stretto consente il rilevamento preciso di componenti o caratteristiche estremamente piccoli che un sensore LED non riuscirebbe a vedere.',
+          icon: 'target',
+        },
+        {
+          title: 'Affidabilità Operativa',
+          desc: 'Garantisce prestazioni costanti in ambienti ad alta velocità, riducendo i tempi di fermo e aumentando il throughput complessivo del sistema.',
+          icon: 'zap',
+        },
+      ],
+    },
+    applications: {
+      title: 'Applicazioni Industriali',
+      subtitle: 'Progettato per gli ambienti dove la precisione è fondamentale.',
+    },
+    contact: {
+      title: 'Contattaci',
+      subtitle: 'Pronti a trovare la soluzione giusta per la vostra operazione?',
+      role: 'Responsabile Vendite',
+      email: 'mike.lee@zebex.com',
+      cta: 'Invia un\'Email',
+    },
+    specs: 'Specifiche',
+    keyFeatures: 'Caratteristiche Principali',
+    viewSpecs: 'Visualizza le Specifiche Complete',
+    learnMore: 'Scopri di Più',
   },
 
   de: {
