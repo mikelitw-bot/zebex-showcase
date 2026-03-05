@@ -1,4 +1,4 @@
-export type Lang = 'en' | 'ko' | 'zh-TW' | 'de' | 'fr' | 'it';
+export type Lang = 'en' | 'ko' | 'zh-TW' | 'de' | 'fr' | 'it' | 'es';
 
 export const translations = {
   en: {
@@ -399,6 +399,86 @@ export const translations = {
     keyFeatures: 'Caratteristiche Principali',
     viewSpecs: 'Visualizza le Specifiche Complete',
     learnMore: 'Scopri di Più',
+  },
+
+  es: {
+    nav: {
+      laserSensors: 'Sensores Láser',
+      fixedScanners: 'Escáneres Fijos',
+      scanModules: 'Módulos de Escaneo',
+      handheldScanners: 'Escáneres de Mano',
+    },
+    hero: {
+      tagline: 'Convierte Datos en Información al Instante',
+      subtitle: 'El escaneo inteligente desbloquea datos valiosos y accionables en cada operación de forma fluida.',
+      cta: 'Explorar Productos',
+    },
+    productNav: {
+      overview: 'Descripción General',
+      specs: 'Especificaciones',
+      applications: 'Aplicaciones',
+    },
+    whyLaser: {
+      badge: 'Ventaja Tecnológica',
+      title: '¿Por qué el Sensor Láser?',
+      subtitle: 'Láser BGS (Supresión de Fondo) vs LED Rojo — diseñado para la automatización industrial de precisión.',
+      laser: 'Láser BGS',
+      led: 'LED Rojo',
+      laserDesc: 'Una tecnología de detección de alta precisión que utiliza haces láser enfocados para detectar objetos según la distancia, ignorando eficazmente los fondos que interfieren.',
+      ledDesc: 'Una solución de detección estándar que utiliza un haz de luz roja visible más difuso, generalmente adecuado para la detección de uso general a corta distancia.',
+      comparison: [
+        {
+          category: 'Precisión del haz y tamaño del punto',
+          laserVal: 'Punto de luz muy concentrado y pequeño para detectar piezas diminutas.',
+          ledVal: 'Haz más amplio y difuso.',
+          laserWin: true,
+        },
+        {
+          category: 'Alcance y profundidad de detección',
+          laserVal: 'Distancias de detección extendidas y resolución de profundidad superior.',
+          ledVal: 'Alcance limitado y resolución de profundidad estándar.',
+          laserWin: true,
+        },
+        {
+          category: 'Sensibilidad a materiales y colores',
+          laserVal: 'Significativamente menos afectado por el color objetivo o la reflectividad de la superficie.',
+          ledVal: 'Puede tener dificultades con diferentes colores objetivo o reflectividades de superficie.',
+          laserWin: true,
+        },
+      ],
+      advantages: [
+        {
+          title: 'Supresión de Fondo Superior',
+          desc: 'Ignora cualquier objeto más allá del punto focal establecido, eliminando falsos disparos de cintas transportadoras o marcos de máquinas.',
+          icon: 'shield',
+        },
+        {
+          title: 'Detección de Micro-Objetos',
+          desc: 'El haz láser estrecho permite la detección precisa de componentes o características extremadamente pequeños que un sensor LED no podría detectar.',
+          icon: 'target',
+        },
+        {
+          title: 'Fiabilidad Operativa',
+          desc: 'Garantiza un rendimiento constante en entornos de alta velocidad, reduciendo el tiempo de inactividad y aumentando el rendimiento general del sistema.',
+          icon: 'zap',
+        },
+      ],
+    },
+    applications: {
+      title: 'Aplicaciones Industriales',
+      subtitle: 'Diseñado para los entornos donde la precisión es más importante.',
+    },
+    contact: {
+      title: 'Contáctenos',
+      subtitle: '¿Listo para encontrar la solución adecuada para su operación?',
+      role: 'Gerente de Ventas',
+      email: 'mike.lee@zebex.com',
+      cta: 'Enviar un Correo',
+    },
+    specs: 'Especificaciones',
+    keyFeatures: 'Características Clave',
+    viewSpecs: 'Ver Especificaciones Completas',
+    learnMore: 'Más Información',
   },
 
   de: {
