@@ -1,4 +1,4 @@
-export type Lang = 'en' | 'ko' | 'zh-TW';
+export type Lang = 'en' | 'ko' | 'zh-TW' | 'de';
 
 export const translations = {
   en: {
@@ -239,5 +239,85 @@ export const translations = {
     keyFeatures: '主要特點',
     viewSpecs: '查看完整規格',
     learnMore: '了解更多',
+  },
+
+  de: {
+    nav: {
+      laserSensors: 'Lasersensoren',
+      fixedScanners: 'Stationäre Scanner',
+      scanModules: 'Scan-Module',
+      handheldScanners: 'Handscanner',
+    },
+    hero: {
+      tagline: 'Input sofort in Erkenntnisse umwandeln',
+      subtitle: 'Intelligentes Scannen erschließt wertvolle, umsetzbare Daten in jedem Betriebsablauf nahtlos.',
+      cta: 'Produkte entdecken',
+    },
+    productNav: {
+      overview: 'Übersicht',
+      specs: 'Technische Daten',
+      applications: 'Anwendungen',
+    },
+    whyLaser: {
+      badge: 'Technologievorteil',
+      title: 'Warum Lasersensor?',
+      subtitle: 'Laser BGS (Hintergrundunterdrückung) vs. LED-Rotlicht — entwickelt für präzise Industrieautomation.',
+      laser: 'Laser BGS',
+      led: 'LED-Rotlicht',
+      laserDesc: 'Eine hochpräzise Sensortechnologie mit fokussierten Laserstrahlen zur entfernungsbasierten Objekterkennung, die störende Hintergründe effektiv ignoriert.',
+      ledDesc: 'Eine Standard-Sensoarlösung mit einem breiter gestreuten sichtbaren Rotlichtstrahl, typischerweise geeignet für Allzweckerkennung auf kürzeren Entfernungen.',
+      comparison: [
+        {
+          category: 'Strahlpräzision & Punktgröße',
+          laserVal: 'Hochkonzentrierter, kleiner Lichtpunkt zur Erkennung kleinster Teile.',
+          ledVal: 'Breiterer, stärker gestreuter Strahl.',
+          laserWin: true,
+        },
+        {
+          category: 'Erfassungsreichweite & Tiefe',
+          laserVal: 'Erweiterte Erfassungsdistanzen und überlegene Tiefenauflösung.',
+          ledVal: 'Begrenzte Reichweite und Standard-Tiefenauflösung.',
+          laserWin: true,
+        },
+        {
+          category: 'Material- & Farbempfindlichkeit',
+          laserVal: 'Deutlich weniger beeinflusst von Zielfarbe oder Oberflächenreflexion.',
+          ledVal: 'Kann bei unterschiedlichen Zielfarben oder Oberflächenreflexionen Probleme haben.',
+          laserWin: true,
+        },
+      ],
+      advantages: [
+        {
+          title: 'Überlegene Hintergrundunterdrückung',
+          desc: 'Ignoriert alle Objekte jenseits des eingestellten Fokuspunkts und eliminiert Fehlauslösungen durch Förderbänder oder Maschinenrahmen.',
+          icon: 'shield',
+        },
+        {
+          title: 'Mikro-Objekterkennung',
+          desc: 'Der schmale Laserstrahl ermöglicht die präzise Erkennung extrem kleiner Bauteile, die ein LED-Sensor übersehen würde.',
+          icon: 'target',
+        },
+        {
+          title: 'Betriebszuverlässigkeit',
+          desc: 'Gewährleistet gleichmäßige Leistung in Hochgeschwindigkeitsumgebungen, reduziert Ausfallzeiten und erhöht den Systemdurchsatz.',
+          icon: 'zap',
+        },
+      ],
+    },
+    applications: {
+      title: 'Industrieanwendungen',
+      subtitle: 'Entwickelt für Umgebungen, in denen Präzision an erster Stelle steht.',
+    },
+    contact: {
+      title: 'Kontakt',
+      subtitle: 'Bereit, die richtige Lösung für Ihren Betrieb zu finden?',
+      role: 'Vertriebsleiter',
+      email: 'mike.lee@zebex.com',
+      cta: 'E-Mail senden',
+    },
+    specs: 'Technische Daten',
+    keyFeatures: 'Hauptmerkmale',
+    viewSpecs: 'Vollständige Spezifikationen',
+    learnMore: 'Mehr erfahren',
   },
 };

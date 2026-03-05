@@ -53,6 +53,7 @@ function LanguageSwitcher({ lang, setLang, dark }: { lang: Lang; setLang: (l: La
     { code: 'en', label: 'EN' },
     { code: 'ko', label: '한국어' },
     { code: 'zh-TW', label: '繁中' },
+    { code: 'de', label: 'DE' },
   ];
   return (
     <div className={`flex items-center gap-1 rounded-full px-2 py-1 ${dark ? 'bg-black/5 border border-black/8' : 'glass'}`}>
